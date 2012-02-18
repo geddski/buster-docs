@@ -16,7 +16,7 @@
     as <kbd>-bar</kbd>, which can mean both <kbd>-b -a -r</kbd>
     and <kbd>-b=ar</kbd>.
   </p>
-  <pre><code>var args = Object.create(buster-args);
+  <pre><code>var args = Object.create(require("buster-args"));
 
 var port = args.<a href="#createOption">createOption</a>("-p", "--port");
 port.<a href="#hasValue">hasValue</a> = true; // So that the parser can read -p2345 as -p=2345
