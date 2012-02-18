@@ -29,13 +29,14 @@
 <pre><code>var config = module.exports;
 
 config["My tests"] = {
+    rootPath: "../",
     environment: "browser",        // or "node"
     sources: [
-        "../lib/mylib.js", // Paths are relative to config file
-        "../lib/**/*.js"   // Glob patterns supported
+        "lib/mylib.js", // Paths are relative to config file
+        "lib/**/*.js"   // Glob patterns supported
     ],
     tests: [
-        "*-test.js"
+        "test/*-test.js"
     ]
 }
 
