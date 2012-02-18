@@ -30,6 +30,14 @@ function serveTemplate(path, pathname, res) {
     }
 }
 
+function title(content) {
+    try {
+        return content.match(/<h1>(.*)<\/h1>/)[1] || "Buster.JS";
+    } catch (e) {
+        return "Buster.JS";
+    }
+}
+
 function renderTemplate(pathname, content) {
     var menu = [
         {href: "/", text: "Home"},
@@ -42,7 +50,9 @@ function renderTemplate(pathname, content) {
         if (current) item.className = "active";
     });
 
-    return ejs.render(LAYOUT, {content: content, menu: menu});
+    return ejs.render(LAYOUT.replace(/<title>Buster<\/title>/,
+                                     "<title>" + title(content) + "</title>"),
+                      {content: content, menu: menu});
 }
 
 function notFound(res) {
