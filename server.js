@@ -31,11 +31,15 @@ function serveTemplate(path, pathname, res) {
 }
 
 function title(content) {
+    var title;
+
     try {
-        return content.match(/<h1>(.*)<\/h1>/)[1] || "Buster.JS";
+        title = content.match(/<h1>(.*)<\/h1>/)[1] || "Buster.JS";
     } catch (e) {
-        return "Buster.JS";
+        title = "Buster.JS";
     }
+
+    return title.replace("<code>", "").replace("</code>", "");
 }
 
 function renderTemplate(pathname, content) {
